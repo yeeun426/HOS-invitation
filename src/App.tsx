@@ -1,10 +1,6 @@
-import { useState } from "react";
 import "./App.css";
-import Invitation from "./components/Invitation";
 
 function App() {
-  const [isClick, setIsClick] = useState(false);
-
   return (
     <div className="background">
       <div className="container">
