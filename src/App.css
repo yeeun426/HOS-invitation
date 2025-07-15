@@ -30,23 +30,21 @@ body {
   text-align: center;
   box-sizing: border-box;
   justify-content: center;
-  animation: shake 3s infinite ease-in-out;
+
+  /* 초기 흔들림 */
+  animation: shake 1s ease-in-out 0s 2;
+  opacity: 1;
 }
 
+/* 깜빡이기 */
+.blink {
+  animation: blink 1.5s infinite alternate;
+}
+
+/* 클릭 시 애니메이션 제거 + 텍스트 페이드인 */
 .container.show {
   animation: none;
-}
-
-.container h2 {
-  font-size: 1.8rem;
-  margin-bottom: 2rem;
-  color: #222;
-}
-
-.text {
-  font-size: 15px;
-  line-height: 1.7;
-  color: #444;
+  opacity: 1;
 }
 
 @keyframes shake {
@@ -70,13 +68,22 @@ body {
   }
 }
 
-.text,
-h2 {
+@keyframes blink {
+  0% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.container h2,
+.text {
   opacity: 0;
   transition: opacity 2s ease-in-out;
 }
 
-.container.show .text,
-.container.show h2 {
+.container.show h2,
+.container.show .text {
   opacity: 1;
 }

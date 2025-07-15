@@ -4,6 +4,16 @@ import "./App.css";
 function App() {
   const [isClick, setIsClick] = useState(false);
   const [fadeIn, setFadeIn] = useState(false);
+  const [blink, setBlink] = useState(false); // 깜빡이기 시작 여부
+
+  useEffect(() => {
+    // 흔들흔들 끝난 뒤 깜빡이기 시작
+    const blinkTimer = setTimeout(() => {
+      setBlink(true);
+    }, 2000); // shake 1s * 2회 후
+
+    return () => clearTimeout(blinkTimer);
+  }, []);
 
   useEffect(() => {
     if (isClick) {
@@ -14,7 +24,9 @@ function App() {
 
   return (
     <div className="background" onClick={() => setIsClick(true)}>
-      <div className={`container ${fadeIn ? "show" : ""}`}>
+      <div
+        className={`container ${blink ? "blink" : ""} ${fadeIn ? "show" : ""}`}
+      >
         {isClick && (
           <>
             <h2>SLOW CLUB</h2>
