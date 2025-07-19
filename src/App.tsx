@@ -2,51 +2,34 @@ import { useEffect, useState } from "react";
 import "./App.css";
 
 function App() {
-  const [isClick, setIsClick] = useState(false);
-  const [fadeIn, setFadeIn] = useState(false);
-  const [blink, setBlink] = useState(false); // 깜빡이기 시작 여부
+  const [blink, setBlink] = useState(false);
+  const [showContent, setShowContent] = useState(false); // paper-content 보이게
+  const [hidePaper, setHidePaper] = useState(false);     // paper 숨기기
 
   useEffect(() => {
-    // 흔들흔들 끝난 뒤 깜빡이기 시작
     const blinkTimer = setTimeout(() => {
       setBlink(true);
-    }, 2500); // shake 1s * 2회 후
-
+    }, 2500);
     return () => clearTimeout(blinkTimer);
   }, []);
 
-  useEffect(() => {
-    if (isClick) {
-      const timer = setTimeout(() => setFadeIn(true), 50);
-      return () => clearTimeout(timer);
-    }
-  }, [isClick]);
+const handleClick = () => {
+  setBlink(false);        // 깜빡임 정지
+  setShowContent(true);   // 새 이미지 서서히 보이기
+  setTimeout(() => {
+    setHidePaper(true);   // 기존 이미지 제거
+  }, 10000);
+};
 
   return (
-    <div className="background" onClick={() => setIsClick(true)}>
+    <div className="background" onClick={handleClick}>
+{!hidePaper && (
+  <div className={`paper ${blink ? "blink" : ""}`}></div>
+)}
+
       <div
-        className={`container ${blink ? "blink" : ""} ${fadeIn ? "show" : ""}`}
-      >
-        {isClick && (
-          <>
-            <h2>SLOW CLUB</h2>
-            <div className="text">
-              <p>
-                초대할게요
-                <br />
-                아트 소셜 클럽
-              </p>
-              <p>느리지만 깊은, 그러한 시간</p>
-              <p>
-                장소 : 후암동
-                <br />
-                날짜 : 2025.07.24
-              </p>
-              <p>그럼, 우리 곧 만나요!</p>
-            </div>
-          </>
-        )}
-      </div>
+        className={`paper-content ${showContent ? "show" : ""}`}
+      ></div>
     </div>
   );
 }
