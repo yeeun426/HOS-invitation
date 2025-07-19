@@ -10,7 +10,7 @@ function App() {
     // 흔들흔들 끝난 뒤 깜빡이기 시작
     const blinkTimer = setTimeout(() => {
       setBlink(true);
-    }, 2000); // shake 1s * 2회 후
+    }, 2500); // shake 1s * 2회 후
 
     return () => clearTimeout(blinkTimer);
   }, []);
