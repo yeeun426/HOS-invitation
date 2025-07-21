@@ -91,9 +91,9 @@ body {
 
 .bottom-left-button {
   position: absolute;
-  top: 50%;
+  top: 47%;
   left: 50%;
-  transform: translate(-50%, -50%) translate(-25vw, 30vh);
+  transform: translate(-50%, -50%) translate(0vw, 30vh);
   border: none;
   cursor: pointer;
   width: 100px;
