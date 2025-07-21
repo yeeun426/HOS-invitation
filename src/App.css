@@ -7,49 +7,27 @@ body {
   word-break: keep-all;
 }
 
-.background {
+.container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   position: relative;
+  cursor: pointer;
 }
 
-/* 기본 paper */
-.paper {
-  width: 98vw;
-  max-width: 600px;
-  aspect-ratio: 0.5;
-  background-image: url(/images/paper.png);
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  border-radius: 12px;
-  animation: shake 1s ease-in-out 0s 2;
-  z-index: 1;
-  position: absolute;
-}
-
-/* content용 이미지 */
+.paper,
 .paper-content {
   width: 98vw;
   max-width: 600px;
   aspect-ratio: 0.5;
-  background-image: url(/images/paper-content.png);
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
+  object-fit: contain;
   border-radius: 12px;
-  opacity: 0;
-  transition: opacity 2s ease-in-out;
   position: absolute;
-  z-index: 2;
+  transition: opacity 1.8s ease-in-out;
 }
 
-.paper-content.show {
-  opacity: 1;
-}
-
+/* 애니메이션 */
 @keyframes shake {
   0% { transform: translate(0, 0) rotate(0deg); }
   20% { transform: translate(-2px, 2px) rotate(-1deg); }
@@ -60,10 +38,35 @@ body {
 }
 
 @keyframes blink {
-  0% { opacity: 0.2; }
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
   100% { opacity: 1; }
 }
 
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.fade-in {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.fade-out {
+  opacity: 0;
+}
+
+.shake {
+  animation: shake 1s ease-in-out 0s 2;
+}
+
 .blink {
+  animation: blink 0.6s infinite alternate;
+}
+
+.blink.fade-out {
   animation: blink 1s infinite alternate;
+  opacity: 0;
+  transition: opacity 2s ease-in-out;
 }
