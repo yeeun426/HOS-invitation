@@ -7,7 +7,7 @@ function App() {
 
   const handleClick = () => {
     if (animationEnded || !clicked) {
-      setAnimationEnded(true)
+      setAnimationEnded(true);
       setClicked(true);
     }
   };
@@ -29,6 +29,15 @@ function App() {
         alt="Paper Content"
         className={`paper-content ${clicked ? "fade-in" : "hidden"}`}
       />
+
+      <a
+        href="https://hos.d-sket.io/notice/22d3947b-e60a-817f-bb23-ce9edddb5146"
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`bottom-left-button ${clicked ? "fade-in" : "hidden"}`}
+      >
+        <img src="/images/button.png" alt="Button" />
+      </a>
     </div>
   );
 }

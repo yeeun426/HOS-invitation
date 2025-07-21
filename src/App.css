@@ -29,18 +29,36 @@ body {
 
 /* 애니메이션 */
 @keyframes shake {
-  0% { transform: translate(0, 0) rotate(0deg); }
-  20% { transform: translate(-2px, 2px) rotate(-1deg); }
-  40% { transform: translate(-2px, -2px) rotate(1deg); }
-  60% { transform: translate(2px, 2px) rotate(0deg); }
-  80% { transform: translate(2px, -2px) rotate(1deg); }
-  100% { transform: translate(0, 0) rotate(0deg); }
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  20% {
+    transform: translate(-2px, 2px) rotate(-1deg);
+  }
+  40% {
+    transform: translate(-2px, -2px) rotate(1deg);
+  }
+  60% {
+    transform: translate(2px, 2px) rotate(0deg);
+  }
+  80% {
+    transform: translate(2px, -2px) rotate(1deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
 }
 
 @keyframes blink {
-  0% { opacity: 1; }
-  50% { opacity: 0.5; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .hidden {
@@ -69,4 +87,20 @@ body {
   animation: blink 1s infinite alternate;
   opacity: 0;
   transition: opacity 2s ease-in-out;
+}
+
+.bottom-left-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translate(-25vw, 30vh);
+  border: none;
+  cursor: pointer;
+  width: 100px;
+  transition: opacity 2s ease-in-out;
+}
+
+.bottom-left-button img {
+  width: 100%;
+  height: auto;
 }
