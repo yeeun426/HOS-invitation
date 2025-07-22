@@ -91,9 +91,11 @@ body {
 
 .bottom-left-button {
   position: absolute;
-  top: 47%;
+  top: 48.5%;
   left: 50%;
   transform: translate(-50%, -50%) translate(0vw, 30vh);
+  animation: shake-horizontal 1s infinite;
+
   border: none;
   cursor: pointer;
   width: 100px;
@@ -103,4 +105,25 @@ body {
 .bottom-left-button img {
   width: 100%;
   height: auto;
+}
+
+@keyframes shake-horizontal {
+  0% {
+    transform: translate(-50%, -50%) translate(0vw, 30vh) rotate(0deg);
+  }
+  20% {
+    transform: translate(-50%, -50%) translate(-1vw, 30vh) rotate(-1deg);
+  }
+  40% {
+    transform: translate(-50%, -50%) translate(1vw, 30vh) rotate(1deg);
+  }
+  60% {
+    transform: translate(-50%, -50%) translate(-0.5vw, 30vh) rotate(-0.5deg);
+  }
+  80% {
+    transform: translate(-50%, -50%) translate(0.5vw, 30vh) rotate(0.5deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) translate(0vw, 30vh) rotate(0deg);
+  }
 }
